@@ -13,11 +13,11 @@ branding:
 
 runs:
   using: 'composite'
-    steps:
-      - run: |
-          echo $GITHUB_REPOSITORY
-          git clone https://github.com/$GITHUB_REPOSITORY
-          ls
-        shell: bash
-      - run: $GITHUB_ACTION_PATH/script.py
-        shell: python
+  steps:
+    - run: |
+        echo $GITHUB_REPOSITORY
+        git clone https://github.com/$GITHUB_REPOSITORY
+        ls
+      shell: bash
+    - run: $GITHUB_ACTION_PATH/script.py
+      shell: python
