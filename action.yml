@@ -12,5 +12,12 @@ branding:
   color: 'blue'
 
 runs:
-  using: 'node12'
-  main: 'index.js'
+  using: 'composite'
+    steps:
+      - run: |
+          echo $GITHUB_REPOSITORY
+          git clone https://github.com/$GITHUB_REPOSITORY
+          ls
+        shell: bash
+      - run: $GITHUB_ACTION_PATH/script.py
+        shell: python
