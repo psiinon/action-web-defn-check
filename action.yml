@@ -18,10 +18,12 @@ runs:
         echo $GITHUB_REPOSITORY
         git clone https://github.com/$GITHUB_REPOSITORY
         ls
+        pip install pyyaml
       shell: bash
     - run: |
         import os
         import sys
+        import yaml
         repo = os.environ['GITHUB_REPOSITORY']
         print('Repo is ' + repo)
         [owner,name] = repo.split('/')
@@ -29,8 +31,12 @@ runs:
         filename = './' + name + '/WebApp.yml'
         isFile = os.path.isfile(filename)
         print('Config file ' + filename + ' exists? ' + str(isFile))
-        if isFile:
-          sys.exit(0)
-        else:
+        if not isFile:
           sys.exit(1)
+        with open(filename, 'r') as stream:
+          try:
+            print(yaml.safe_load(stream))
+          except yaml.YAMLError as exc:
+            print(exc)
+            sys.exit(1)
       shell: python
