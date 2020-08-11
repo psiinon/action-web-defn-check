@@ -11,5 +11,6 @@ branding:
   icon: 'check'
   color: 'blue'
 
-run: |
-  echo Testing 1 2 3 ...
+runs:
+  using: 'node12'
+  main: 'index.js'
