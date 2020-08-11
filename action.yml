@@ -1,0 +1,15 @@
+# action name
+name: 'ossf-web-defn-check'
+
+# action author
+author: 'Simon Bennetts <psiinon@gmail.com>'
+
+# action description
+description: 'Checks if a repo has a valid Web Application Definition file.'
+
+branding:
+  icon: 'check'
+  color: 'blue'
+
+run: |
+  echo Testing 1 2 3 ...
